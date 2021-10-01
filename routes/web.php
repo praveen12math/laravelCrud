@@ -47,18 +47,23 @@ Route::group(['middleware' => "web"], function () {
     });
 
     Route::get('/user', [customAuth::class, "dashboard"]);
-    Route::get('/admin', [customAuth::class, "adminDashboard"]);
 
-    Route::get('/update/{id}', [UserController::class, "showUserData"]);
-    Route::post('/update', [UserController::class, "UpdateUser"]);
-    Route::get('/showUser/{id}', [UserController::class, "seeUserData"]);
-    Route::get('/deleteUser/{userId}', [UserController::class, "deleteUser"]);
-    Route::post('/addUser', [UserController::class, "addUser"]);
+    Route::group(['middleware' => 'myProtectedRoute'], function(){
 
+        Route::get('/admin', [customAuth::class, "adminDashboard"]);
 
-    Route::post('/addRole', [RoleController::class, "addRole"]);
-    Route::get('/seeRole/{id}', [RoleController::class, "seeRole"]);
-    Route::get('/deleteRole/{myId}', [RoleController::class, "deleteRole"]);
-    Route::get('/showRole/{myId}', [RoleController::class, "showRole"]);
-    Route::post('/updateRole', [RoleController::class, "updateRole"]);
+        Route::get('/update/{id}', [UserController::class, "showUserData"]);
+        Route::post('/update', [UserController::class, "UpdateUser"]);
+        Route::get('/showUser/{id}', [UserController::class, "seeUserData"]);
+        Route::get('/deleteUser/{userId}', [UserController::class, "deleteUser"]);
+        Route::post('/addUser', [UserController::class, "addUser"]);
+    
+    
+        Route::post('/addRole', [RoleController::class, "addRole"]);
+        Route::get('/seeRole/{id}', [RoleController::class, "seeRole"]);
+        Route::get('/deleteRole/{myId}', [RoleController::class, "deleteRole"]);
+        Route::get('/showRole/{myId}', [RoleController::class, "showRole"]);
+        Route::post('/updateRole', [RoleController::class, "updateRole"]);
+    });
+   
 });
