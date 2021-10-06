@@ -12,6 +12,7 @@ class RoleController extends Controller
 {
     //
 
+    //for adding new role by admin
     function addRole(Request $res)
     {
 
@@ -32,6 +33,8 @@ class RoleController extends Controller
         }
     }
 
+
+    //for deleting role by admin
     public function deleteRole($myId){
         $isRoleAssociate = array();
         $isRoleAssociate = DB::table('users')->where('role', $myId)->get();
@@ -51,6 +54,7 @@ class RoleController extends Controller
     }
 
 
+    //showing role on form which can edit by admin
     public function showRole($myId){
         $data = Role::find($myId);
         return view('editRole', ['data'=>$data]);
@@ -62,6 +66,7 @@ class RoleController extends Controller
     }
 
 
+    //update role by admin
     public function updateRole(Request $res){
 
         $myValidate = DB::table('roles')->where('role', $res->role)->get();

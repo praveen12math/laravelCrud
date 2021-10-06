@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="col-10 mb-5">
-    <a href="/user"> <button class="btn btn-danger float-end">Close</button> </a>
+    <a href="/admin"> <button class="btn btn-danger float-end">Close</button> </a>
 </div>
 
 <form action="/update" method="POST" class="mx-auto col-8">

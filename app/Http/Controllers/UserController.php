@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    //
+    //showing data for edit details in edit form 
     public function showUserData($id)
     {
 
@@ -25,6 +25,7 @@ class UserController extends Controller
     }
 
 
+    //For updating user details
     function updateUser(Request $request)
     {
         $request->validate([
@@ -45,6 +46,7 @@ class UserController extends Controller
         return redirect('/admin');
     }
 
+    //for deleting user
     function deleteUser($userId)
     {
 
@@ -55,6 +57,8 @@ class UserController extends Controller
         return redirect('/user');
     }
 
+
+    //for adding new user by admin
     function addUser(Request $res)
     {
         $res->validate([

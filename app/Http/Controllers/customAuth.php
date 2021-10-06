@@ -13,16 +13,20 @@ class customAuth extends Controller
 {
     //
 
+    //login view page controller
     public function login()
     {
         return view('auth.login');
     }
 
+    //register view page controller
     public function register()
     {
         return view('auth.register');
     }
 
+
+    //new user register controller
     public function registerUser(Request $request)
     {
         $request->validate([
@@ -50,6 +54,7 @@ class customAuth extends Controller
 
 
 
+    //login controller
     public function loginUser(Request $request)
     {
 
@@ -63,9 +68,6 @@ class customAuth extends Controller
                 $request->session()->put('name', $user->name);
                 $request->session()->put('userId', $user->id);
                 //   $request->session()->put('role', $user->role);
-                // print_r($user->role);
-                // die();
-                //return  print_r(Session::get('role'));
 
                 $authPage = Role::find($user->role);
 
@@ -85,6 +87,7 @@ class customAuth extends Controller
 
 
 
+    //user dashboard view controller
     public function dashboard()
     {
         $userData = DB::table('users')->where('id', Session::get('userId'))->get();
@@ -93,6 +96,7 @@ class customAuth extends Controller
     }
 
 
+    //admin view dashboard
     public function adminDashboard()
     {
         $userData = array();
